@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Example1</title>
+    <script src="./d3/d3.min.js"></script>
+</head>
+
+<body>
+    <p>Un peu de texte</p>
+    <p class="bleu">flndslfnsdlfndslfndslfkndslfkndslfkndslfknsdlffknds</p>
+    <p class="bleu">jfhksdfhdskhfkdsjfhdskjfhsdkfjhsdkjfhsdkjfhsdkjfhdskjfhdksjfhsdkj</p>
+    <p>dlfjsdfhdqpfjhfepifhqzpeifhzepifehzpfizeh</p>
+    <p>You win!</p>
+
+    <script>
+        d3.selectAll('p.bleu')
+            .transition()
+            .duration(1000)
+            .style('color', 'blue');
+
+        let tab = d3.selectAll('p').nodes();
+        
+        d3.select(tab[4])
+            .style('color', 'green')
+            .style('text-align', 'center')
+            .style('font-size', '0px')
+            .transition()
+            .ease(d3.easeElastic)
+            .duration(5000)
+            .style('font-size', "100px")
+    </script>
+</body>
+</html>

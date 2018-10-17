@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Example3</title>
+    <script src="./d3/d3.min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        let svg = d3.select('body').append('svg')
+        svg.attr('width', 600)
+            .attr('height', 400)
+
+        function calculerX(d, i){
+            return 50*d;
+        }
+
+        function afficher(data, color){
+            //Enter new elements (rect) if needed
+            rects = svg.selectAll('rect').data(data)
+            rects.enter()
+                .append('rect')
+                .attr('width', 20)
+                .attr('height', 20)
+                .attr('y', 50)
+                .attr('x', calculerX)
+                .attr('fill', color);
+            //Update elements
+            rects
+                .attr('x', calculerX)
+                .attr('fill', color)
+            //Exit allows to delete previous values
+            rects.exit().remove();
+        }
+        //Severals test to check if ENTER/UPDATE/EXIT works well
+        //First we ENTER tree rectangle position, 1,2,3 color RED
+        afficher([1,2,3], 'red');
+        //Then we ENTER 5 and 6 and update 1,2,4 (tree rects) color blue
+        afficher([1,2,4,5,6], 'blue');
+        //Update and delete unuse rects
+        afficher([1,2,2.5],'green')
+    </script>
+</body>
+</html> 
