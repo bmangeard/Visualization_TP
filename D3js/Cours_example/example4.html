@@ -20,7 +20,13 @@
         svg.attr('width', width)
             .attr('height', height)
 
+        let scale = d3.scaleLinear()
+            .domain([0,10])
+            .range([0, width-2*marge])
 
+        var rects = d3.selectAll('rect').data(tab)
+        rects.enter()
+            .append('rect')
     </script>
 </body>
 </html>
